@@ -1,0 +1,235 @@
+﻿<Window x:Class="ToDBC0419.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ToDBC0419"
+        mc:Ignorable="d"
+        Title="ToDBC" Height="450" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="#FAFAD2"
+        WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="	#E1FFFF" 
+              Grid.ColumnSpan="2">
+            <Label Content="資料庫操作系統" FontSize="12" Foreground="#696969"></Label>
+            <Button Content="X" 
+                    Height="25"
+                    FontWeight="Medium"
+                    Foreground="#696969"
+                    FontSize="14"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center" Click="Button_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#E1FFFF"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FFF0F5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="50" Height="25" CornerRadius="10" Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="50"/>
+            </Grid.ColumnDefinitions>
+                
+            
+        </Grid>
+        
+        <StackPanel Grid.Row="1">
+            <StackPanel> <!--第一行說明及輸入欄-->
+                <StackPanel Orientation="Horizontal">
+
+                    <Label Content="輸入現有資料，並選擇對資料庫操作。" Height="50"
+                       VerticalContentAlignment="Center"
+                       HorizontalContentAlignment="Center"
+                       FontSize="20" Foreground="#696969"></Label>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Pk    :" Width="50" FontSize="14" VerticalAlignment="Center" Foreground="#696969"></Label>
+                    <TextBox x:Name="Pk_Input" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="173"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Id     :" Width="50" FontSize="14" VerticalAlignment="Center" Foreground="#696969"></Label>
+                    <TextBox x:Name="Id_Input" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="173"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                    <Label Content="Pass :" Width="50" FontSize="14" VerticalAlignment="Center" Foreground="#696969"></Label>
+                    <TextBox x:Name="Pw_Input" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="173"></TextBox>
+                </StackPanel>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,0" >
+                <TextBox x:Name="Message" Height="50" IsReadOnly="True" BorderThickness="0" Background="#FAFAD2" ></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" >
+                <Button x:Name="BtnSet" Content="新增" Margin="10,20,37,35" Height="35" Width="50" FontSize="16" Click="BtnSet_Click" Foreground="#696969">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Azure"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF0F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="BtnShow" Content="查詢" Margin="0,20,37,35" Height="35" Width="50" FontSize="16" Click="BtnShow_Click" Foreground="#696969">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Azure"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF0F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="BtnUpdate" Content="修改" Margin="0,20,37,35" Height="35" Width="50" FontSize="16" Click="BtnUpdate_Click" Foreground="#696969">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Azure"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF0F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button x:Name="BtnDelete" Content="刪除" Margin="0,20,37,35" Height="35" Width="50" FontSize="16" Click="BtnDelete_Click" Foreground="#696969">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Azure"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF0F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="50" Height="35" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <Label  Content="批量查詢需使用root帳號登入" Foreground="#696969"></Label>
+                <Button x:Name="toLogin" Content="進入批量查詢" Click="Button_toLogin" HorizontalAlignment="Left" Foreground="#696969">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#E1FFFF"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#FFF0F5"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="300" Height="20" CornerRadius="10" Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                
+
+            </StackPanel>
+            
+
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.RowSpan="2">
+            <!--C-->
+            <Label Content="C" FontSize="300" Foreground="#A9A9A9" Margin="120,120,0,0" FontFamily="Segoe Script"></Label>
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2" Margin="380,-300,-610,85">
+            <!--#-->
+            <Grid.RenderTransform>
+                <RotateTransform Angle="40"/>
+            </Grid.RenderTransform>
+            <StackPanel Orientation="Horizontal" Margin="200,380,-255,-250">
+
+                <StackPanel>
+                    <Border Width="300" Height="15" Background="	#D3D3D3" Margin="0,150,0,0" CornerRadius="10"></Border>
+                    <Border Width="300" Height="15" Background="	#D3D3D3" Margin="75,60,0,0" CornerRadius="10"></Border>
+                </StackPanel>
+
+            </StackPanel>
+            
+
+        </Grid>
+        <Grid Grid.Column="1" Grid.RowSpan="2" Margin="-100,0,-610,0">
+            <!--#2-->
+            <Grid.RenderTransform>
+                <RotateTransform Angle="-40"/>
+            </Grid.RenderTransform>
+            <StackPanel Orientation="Horizontal" Margin="-50,380,0,-250">
+
+                <StackPanel>
+                    <Border Width="300" Height="15" Background="	#D3D3D3" Margin="-20,150,0,0" CornerRadius="10"></Border>
+                    <Border Width="300" Height="15" Background="	#D3D3D3" Margin="45,60,0,0" CornerRadius="10"></Border>
+                </StackPanel>
+
+            </StackPanel>
+
+
+        </Grid>
+
+    </Grid>
+    
+</Window>
